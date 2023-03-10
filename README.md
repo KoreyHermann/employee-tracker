@@ -21,3 +21,6 @@ n/a
 Please refer to the LICENSE in the repo
 
 ## Link
+
+![image](https://user-images.githubusercontent.com/118943682/224227903-5e746eaa-6284-497b-ae17-f476dd731e8e.png)
+https://github.com/KoreyHermann/employee-tracker
