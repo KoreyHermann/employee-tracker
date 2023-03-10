@@ -24,3 +24,7 @@ Please refer to the LICENSE in the repo
 
 ![image](https://user-images.githubusercontent.com/118943682/224227903-5e746eaa-6284-497b-ae17-f476dd731e8e.png)
 https://github.com/KoreyHermann/employee-tracker
+
+
+https://user-images.githubusercontent.com/118943682/224228403-748f32f2-96d0-4b4d-ac01-970bc384bbcd.mp4
+
