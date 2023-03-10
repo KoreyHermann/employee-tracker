@@ -2,7 +2,6 @@
 const inquirer = require('inquirer');
 const db = require('./db/connection');
 db.connect(err => {
-    if (err) throw err;
     console.log('Database connected.');
     employee_tracker();
 });
@@ -18,21 +17,21 @@ var employee_tracker = function () {
         
         if (answers.prompt === 'View department') {
             db.query(`SELECT * FROM department`, (err, result) => {
-                if (err) throw err;
+                
                 console.log("Viewing departments: ");
                 console.table(result);
                 employee_tracker();
             });
         } else if (answers.prompt === 'View roles') {
             db.query(`SELECT * FROM role`, (err, result) => {
-                if (err) throw err;
+                
                 console.log("Viewing roles: ");
                 console.table(result);
                 employee_tracker();
             });
         } else if (answers.prompt === 'View employees') {
             db.query(`SELECT * FROM employee`, (err, result) => {
-                if (err) throw err;
+                
                 console.log("Viewing employees: ");
                 console.table(result);
                 employee_tracker();
@@ -53,7 +52,7 @@ var employee_tracker = function () {
                 }
             }]).then((answers) => {
                 db.query(`INSERT INTO department (name) VALUES (?)`, [answers.department], (err, result) => {
-                    if (err) throw err;
+                    
                     console.log(`Added ${answers.department} to the database.`)
                     employee_tracker();
                 });
@@ -61,7 +60,7 @@ var employee_tracker = function () {
         } else if (answers.prompt === 'Add role') {
             
             db.query(`SELECT * FROM department`, (err, result) => {
-                if (err) throw err;
+                
 
                 inquirer.prompt([
                     {
@@ -110,7 +109,7 @@ var employee_tracker = function () {
                     }
 
                     db.query(`INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)`, [answers.role, answers.salary, department.id], (err, result) => {
-                        if (err) throw err;
+                        
                         console.log(`Added ${answers.role} to the database.`)
                         employee_tracker();
                     });
@@ -118,7 +117,7 @@ var employee_tracker = function () {
             });
         } else if (answers.prompt === 'Add employee') {
             db.query(`SELECT * FROM employee, role`, (err, result) => {
-                if (err) throw err;
+                
 
                 inquirer.prompt([
                     {
@@ -181,7 +180,7 @@ var employee_tracker = function () {
                     }
 
                     db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`, [answers.firstName, answers.lastName, role.id, answers.manager.id], (err, result) => {
-                        if (err) throw err;
+                        
                         console.log(`Added ${answers.firstName} ${answers.lastName} to the database.`)
                         employee_tracker();
                     });
@@ -189,7 +188,7 @@ var employee_tracker = function () {
             });
         } else if (answers.prompt === 'Update roles') {
             db.query(`SELECT * FROM employee, role`, (err, result) => {
-                if (err) throw err;
+                
                 inquirer.prompt([
                     {
                         type: 'list',
@@ -230,7 +229,7 @@ var employee_tracker = function () {
                         }
                     }
                     db.query(`Update employee`, [{role_id: role}, {last_name: name}], (err, result) => {
-                        if (err) throw err;
+                        
                         console.log(`Updated ${answers.employee} role to the database.`)
                         employee_tracker();
                     });
