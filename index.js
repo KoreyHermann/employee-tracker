@@ -243,5 +243,4 @@ var employee_tracker = function () {
     })
 };
 
-// add password to db.sql later
 
